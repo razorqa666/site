@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Примеры кода — микроразметка Schema.org</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/open-props/open-props.min.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="header-logo"><span class="accent">{</span>&nbsp;schema<span class="accent">}</span></a>
+  <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</header>
+<div class="overlay"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Навигация</div>
+      <nav class="sidebar-nav">
+        <a href="index.html"><span class="sidebar-icon">🏠</span> Главная</a>
+        <a href="what-is.html"><span class="sidebar-icon">📖</span> Что такое микроразметка</a>
+        <a href="schema.html"><span class="sidebar-icon">🗂</span> Schema.org</a>
+        <a href="json-ld.html"><span class="sidebar-icon">⚡</span> JSON-LD</a>
+        <a href="microdata.html"><span class="sidebar-icon">🏷</span> Microdata и RDFa</a>
+        <a href="types.html"><span class="sidebar-icon">🔢</span> Основные типы</a>
+        <a href="seo.html"><span class="sidebar-icon">📈</span> Влияние на SEO</a>
+        <a href="tools.html"><span class="sidebar-icon">🛠</span> Инструменты</a>
+        <a href="examples.html"><span class="sidebar-icon">💡</span> Примеры кода</a>
+      </nav>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Подписка</div>
+      <div class="sidebar-subscribe">
+        <p>Получайте обновления о развитии Schema.org</p>
+        <input type="email" placeholder="ваш@email.ru" aria-label="Email">
+        <button type="button">Подписаться</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-hero">
+      <div class="breadcrumb">schema-guide / <span>примеры</span></div>
+      <h1 class="page-title">Примеры <span class="hl">кода</span></h1>
+      <p class="page-desc">Готовые шаблоны JSON-LD для наиболее распространённых сценариев — копируй и адаптируй.</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Рецепт (Recipe)</h2>
+      <div class="code-label">Полная разметка рецепта</div>
+      <div class="code-block"><pre><span class="c-tag">&lt;script</span> <span class="c-attr">type</span><span class="c-val">="application/ld+json"</span><span class="c-tag">&gt;</span>
+<span class="c-key">{</span>
+  <span class="c-str">"@context"</span>: <span class="c-val">"https://schema.org"</span>,
+  <span class="c-str">"@type"</span>: <span class="c-val">"Recipe"</span>,
+  <span class="c-str">"name"</span>: <span class="c-val">"Паста карбонара"</span>,
+  <span class="c-str">"author"</span>: <span class="c-key">{</span> <span class="c-str">"@type"</span>: <span class="c-val">"Person"</span>, <span class="c-str">"name"</span>: <span class="c-val">"Шеф Антон"</span> <span class="c-key">}</span>,
+  <span class="c-str">"datePublished"</span>: <span class="c-val">"2026-01-15"</span>,
+  <span class="c-str">"prepTime"</span>: <span class="c-val">"PT10M"</span>,
+  <span class="c-str">"cookTime"</span>: <span class="c-val">"PT20M"</span>,
+  <span class="c-str">"recipeYield"</span>: <span class="c-val">"2 порции"</span>,
+  <span class="c-str">"recipeCategory"</span>: <span class="c-val">"Паста"</span>,
+  <span class="c-str">"recipeCuisine"</span>: <span class="c-val">"Итальянская"</span>,
+  <span class="c-str">"nutrition"</span>: <span class="c-key">{</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"NutritionInformation"</span>,
+    <span class="c-str">"calories"</span>: <span class="c-val">"560 ккал"</span>
+  <span class="c-key">}</span>,
+  <span class="c-str">"recipeIngredient"</span>: <span class="c-key">[</span>
+    <span class="c-val">"200 г спагетти"</span>,
+    <span class="c-val">"100 г панчетты"</span>,
+    <span class="c-val">"2 яйца"</span>,
+    <span class="c-val">"50 г пармезана"</span>
+  <span class="c-key">]</span>,
+  <span class="c-str">"aggregateRating"</span>: <span class="c-key">{</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"AggregateRating"</span>,
+    <span class="c-str">"ratingValue"</span>: <span class="c-val">"4.9"</span>,
+    <span class="c-str">"reviewCount"</span>: <span class="c-val">"312"</span>
+  <span class="c-key">}</span>
+<span class="c-key">}</span>
+<span class="c-tag">&lt;/script&gt;</span></pre></div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Организация (Organization)</h2>
+      <div class="code-block"><pre><span class="c-key">{</span>
+  <span class="c-str">"@context"</span>: <span class="c-val">"https://schema.org"</span>,
+  <span class="c-str">"@type"</span>: <span class="c-val">"Organization"</span>,
+  <span class="c-str">"name"</span>: <span class="c-val">"ООО «Технологии»"</span>,
+  <span class="c-str">"url"</span>: <span class="c-val">"https://tech.example.ru"</span>,
+  <span class="c-str">"logo"</span>: <span class="c-val">"https://tech.example.ru/logo.svg"</span>,
+  <span class="c-str">"description"</span>: <span class="c-val">"Разработка веб-приложений с 2015 года"</span>,
+  <span class="c-str">"address"</span>: <span class="c-key">{</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"PostalAddress"</span>,
+    <span class="c-str">"streetAddress"</span>: <span class="c-val">"ул. Ленина, 42"</span>,
+    <span class="c-str">"addressLocality"</span>: <span class="c-val">"Москва"</span>,
+    <span class="c-str">"postalCode"</span>: <span class="c-val">"101000"</span>,
+    <span class="c-str">"addressCountry"</span>: <span class="c-val">"RU"</span>
+  <span class="c-key">}</span>,
+  <span class="c-str">"contactPoint"</span>: <span class="c-key">{</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"ContactPoint"</span>,
+    <span class="c-str">"telephone"</span>: <span class="c-val">"+7-800-000-00-00"</span>,
+    <span class="c-str">"contactType"</span>: <span class="c-val">"customer service"</span>
+  <span class="c-key">}</span>,
+  <span class="c-str">"sameAs"</span>: <span class="c-key">[</span>
+    <span class="c-val">"https://vk.com/techexample"</span>,
+    <span class="c-val">"https://t.me/techexample"</span>
+  <span class="c-key">]</span>
+<span class="c-key">}</span></pre></div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Вакансия (JobPosting)</h2>
+      <div class="code-block"><pre><span class="c-key">{</span>
+  <span class="c-str">"@context"</span>: <span class="c-val">"https://schema.org"</span>,
+  <span class="c-str">"@type"</span>: <span class="c-val">"JobPosting"</span>,
+  <span class="c-str">"title"</span>: <span class="c-val">"Frontend-разработчик"</span>,
+  <span class="c-str">"description"</span>: <span class="c-val">"Разработка интерфейсов на React..."</span>,
+  <span class="c-str">"datePosted"</span>: <span class="c-val">"2026-09-01"</span>,
+  <span class="c-str">"validThrough"</span>: <span class="c-val">"2026-10-01"</span>,
+  <span class="c-str">"employmentType"</span>: <span class="c-val">"FULL_TIME"</span>,
+  <span class="c-str">"hiringOrganization"</span>: <span class="c-key">{</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"Organization"</span>,
+    <span class="c-str">"name"</span>: <span class="c-val">"ООО «Технологии»"</span>
+  <span class="c-key">}</span>,
+  <span class="c-str">"jobLocation"</span>: <span class="c-key">{</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"Place"</span>,
+    <span class="c-str">"address"</span>: <span class="c-key">{</span>
+      <span class="c-str">"@type"</span>: <span class="c-val">"PostalAddress"</span>,
+      <span class="c-str">"addressLocality"</span>: <span class="c-val">"Москва"</span>,
+      <span class="c-str">"addressCountry"</span>: <span class="c-val">"RU"</span>
+    <span class="c-key">}</span>
+  <span class="c-key">}</span>,
+  <span class="c-str">"baseSalary"</span>: <span class="c-key">{</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"MonetaryAmount"</span>,
+    <span class="c-str">"currency"</span>: <span class="c-val">"RUB"</span>,
+    <span class="c-str">"value"</span>: <span class="c-key">{</span>
+      <span class="c-str">"@type"</span>: <span class="c-val">"QuantitativeValue"</span>,
+      <span class="c-str">"minValue"</span>: <span class="c-val">150000</span>,
+      <span class="c-str">"maxValue"</span>: <span class="c-val">250000</span>,
+      <span class="c-str">"unitText"</span>: <span class="c-val">"MONTH"</span>
+    <span class="c-key">}</span>
+  <span class="c-key">}</span>
+<span class="c-key">}</span></pre></div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">SiteLinks Searchbox</h2>
+      <p>Добавляет поисковую строку прямо в сниппет вашего сайта в брендовых запросах Google.</p>
+      <div class="code-block"><pre><span class="c-key">{</span>
+  <span class="c-str">"@context"</span>: <span class="c-val">"https://schema.org"</span>,
+  <span class="c-str">"@type"</span>: <span class="c-val">"WebSite"</span>,
+  <span class="c-str">"url"</span>: <span class="c-val">"https://example.com/"</span>,
+  <span class="c-str">"potentialAction"</span>: <span class="c-key">{</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"SearchAction"</span>,
+    <span class="c-str">"target"</span>: <span class="c-key">{</span>
+      <span class="c-str">"@type"</span>: <span class="c-val">"EntryPoint"</span>,
+      <span class="c-str">"urlTemplate"</span>: <span class="c-val">"https://example.com/search?q={search_term_string}"</span>
+    <span class="c-key">}</span>,
+    <span class="c-str">"query-input"</span>: <span class="c-val">"required name=search_term_string"</span>
+  <span class="c-key">}</span>
+<span class="c-key">}</span></pre></div>
+      <div class="info-box"><strong>Примечание:</strong> Google самостоятельно решает, показывать ли Sitelinks Searchbox. Разметка лишь даёт подсказку о наличии поиска на сайте.</div>
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-col-title">О проекте</div>
+      <p style="font-size:0.85rem;color:var(--text-muted);">Учебный сайт по теме «Использование микроразметки (Schema.org, JSON-LD)». CSS-фреймворк: Open Props.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Разделы</div>
+      <ul class="footer-links">
+        <li><a href="what-is.html">Что такое микроразметка</a></li>
+        <li><a href="schema.html">Schema.org</a></li>
+        <li><a href="json-ld.html">JSON-LD</a></li>
+        <li><a href="types.html">Основные типы</a></li>
+        <li><a href="tools.html">Инструменты</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Контакты</div>
+      <ul class="footer-links">
+        <li>Студент: Жуковский Даниил Константинович</li>
+        <li><a href="mailto:student@example.ru">student@example.ru</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Жуковский Даниил Константинович. Все права защищены.</span>
+    <span>Open Props · HTML5 · CSS3</span>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

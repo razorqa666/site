@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>JSON-LD — формат структурированных данных</title>
+  <meta name="description" content="Полное руководство по JSON-LD: синтаксис, контексты, граф данных, как подключить к сайту">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/open-props/open-props.min.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="header-logo"><span class="accent">{</span>&nbsp;schema<span class="accent">}</span></a>
+  <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</header>
+<div class="overlay"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Навигация</div>
+      <nav class="sidebar-nav">
+        <a href="index.html"><span class="sidebar-icon">🏠</span> Главная</a>
+        <a href="what-is.html"><span class="sidebar-icon">📖</span> Что такое микроразметка</a>
+        <a href="schema.html"><span class="sidebar-icon">🗂</span> Schema.org</a>
+        <a href="json-ld.html"><span class="sidebar-icon">⚡</span> JSON-LD</a>
+        <a href="microdata.html"><span class="sidebar-icon">🏷</span> Microdata и RDFa</a>
+        <a href="types.html"><span class="sidebar-icon">🔢</span> Основные типы</a>
+        <a href="seo.html"><span class="sidebar-icon">📈</span> Влияние на SEO</a>
+        <a href="tools.html"><span class="sidebar-icon">🛠</span> Инструменты</a>
+        <a href="examples.html"><span class="sidebar-icon">💡</span> Примеры кода</a>
+      </nav>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Подписка</div>
+      <div class="sidebar-subscribe">
+        <p>Получайте обновления о развитии Schema.org</p>
+        <input type="email" placeholder="ваш@email.ru" aria-label="Email">
+        <button type="button">Подписаться</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-hero">
+      <div class="breadcrumb">schema-guide / <span>json-ld</span></div>
+      <h1 class="page-title"><span class="hl">JSON-LD</span> — формат структурированных данных</h1>
+      <p class="page-desc">JSON for Linked Data — рекомендованный Google способ добавить структурированные данные на страницу.</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Что такое JSON-LD</h2>
+      <p>JSON-LD (JSON for Linking Data) — это формат сериализации связанных данных на основе JSON, ставший официальной рекомендацией W3C в 2014 году. В отличие от Microdata и RDFa, JSON-LD вставляется в отдельный тег <code>&lt;script&gt;</code> и не требует изменений в структуре HTML-разметки страницы.</p>
+      <div class="info-box"><strong>Официальная позиция Google:</strong> «Мы рекомендуем JSON-LD для реализации структурированных данных везде, где это возможно.» — документация Google Search Central, 2024.</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Ключевые ключевые слова JSON-LD</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Ключевое слово</th><th>Назначение</th><th>Пример значения</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>@context</code></td><td>Определяет словарь (пространство имён)</td><td>"https://schema.org"</td></tr>
+          <tr><td><code>@type</code></td><td>Указывает тип сущности</td><td>"Article", "Product"</td></tr>
+          <tr><td><code>@id</code></td><td>Уникальный идентификатор (URI)</td><td>"https://example.com/page"</td></tr>
+          <tr><td><code>@graph</code></td><td>Массив нескольких сущностей в одном блоке</td><td>[{...}, {...}]</td></tr>
+          <tr><td><code>@language</code></td><td>Язык текстовых значений по умолчанию</td><td>"ru"</td></tr>
+          <tr><td><code>@value</code></td><td>Литеральное значение с типом или языком</td><td>{"@value": "Привет", "@language": "ru"}</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Структура документа JSON-LD</h2>
+      <div class="code-label">Минимальная структура</div>
+      <div class="code-block"><pre><span class="c-tag">&lt;script</span> <span class="c-attr">type</span><span class="c-val">="application/ld+json"</span><span class="c-tag">&gt;</span>
+<span class="c-key">{</span>
+  <span class="c-str">"@context"</span>: <span class="c-val">"https://schema.org"</span>,  <span class="c-com">// обязательно</span>
+  <span class="c-str">"@type"</span>: <span class="c-val">"Article"</span>,              <span class="c-com">// тип сущности</span>
+  <span class="c-str">"headline"</span>: <span class="c-val">"Заголовок статьи"</span>,  <span class="c-com">// свойства типа</span>
+  <span class="c-str">"author"</span>: <span class="c-key">{</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"Person"</span>,
+    <span class="c-str">"name"</span>: <span class="c-val">"Имя Автора"</span>
+  <span class="c-key">}</span>,
+  <span class="c-str">"datePublished"</span>: <span class="c-val">"2026-09-01"</span>  <span class="c-com">// ISO 8601</span>
+<span class="c-key">}</span>
+<span class="c-tag">&lt;/script&gt;</span></pre></div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Граф данных @graph</h2>
+      <p>Когда на одной странице нужно разметить несколько независимых сущностей (например, организацию и хлебные крошки одновременно), используется массив <code>@graph</code>:</p>
+      <div class="code-block"><pre><span class="c-key">{</span>
+  <span class="c-str">"@context"</span>: <span class="c-val">"https://schema.org"</span>,
+  <span class="c-str">"@graph"</span>: <span class="c-key">[</span>
+    <span class="c-key">{</span>
+      <span class="c-str">"@type"</span>: <span class="c-val">"WebSite"</span>,
+      <span class="c-str">"@id"</span>: <span class="c-val">"https://example.com/#website"</span>,
+      <span class="c-str">"name"</span>: <span class="c-val">"Мой сайт"</span>,
+      <span class="c-str">"url"</span>: <span class="c-val">"https://example.com"</span>
+    <span class="c-key">}</span>,
+    <span class="c-key">{</span>
+      <span class="c-str">"@type"</span>: <span class="c-val">"BreadcrumbList"</span>,
+      <span class="c-str">"itemListElement"</span>: <span class="c-key">[</span>
+        <span class="c-key">{</span>
+          <span class="c-str">"@type"</span>: <span class="c-val">"ListItem"</span>,
+          <span class="c-str">"position"</span>: <span class="c-val">1</span>,
+          <span class="c-str">"name"</span>: <span class="c-val">"Главная"</span>,
+          <span class="c-str">"item"</span>: <span class="c-val">"https://example.com"</span>
+        <span class="c-key">}</span>
+      <span class="c-key">]</span>
+    <span class="c-key">}</span>
+  <span class="c-key">]</span>
+<span class="c-key">}</span></pre></div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Преимущества JSON-LD перед другими форматами</h2>
+      <ul class="styled-list">
+        <li>Не затрагивает видимую HTML-разметку — проще внедрять и поддерживать</li>
+        <li>Легко добавить через CMS или систему управления тегами (GTM)</li>
+        <li>Можно генерировать динамически на сервере (Node.js, PHP, Python)</li>
+        <li>Легко читается и понимается разработчиками</li>
+        <li>Единственный формат, где Google официально рекомендует использование</li>
+        <li>Поддерживает граф данных (@graph) для сложных структур</li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-col-title">О проекте</div>
+      <p style="font-size:0.85rem;color:var(--text-muted);">Учебный сайт по теме «Использование микроразметки (Schema.org, JSON-LD)». CSS-фреймворк: Open Props.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Разделы</div>
+      <ul class="footer-links">
+        <li><a href="what-is.html">Что такое микроразметка</a></li>
+        <li><a href="schema.html">Schema.org</a></li>
+        <li><a href="json-ld.html">JSON-LD</a></li>
+        <li><a href="types.html">Основные типы</a></li>
+        <li><a href="tools.html">Инструменты</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Контакты</div>
+      <ul class="footer-links">
+        <li>Студент: Жуковский Даниил Константинович</li>
+        <li><a href="mailto:student@example.ru">student@example.ru</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Жуковский Даниил Константинович. Все права защищены.</span>
+    <span>Open Props · HTML5 · CSS3</span>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

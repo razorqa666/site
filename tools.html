@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Инструменты для работы с микроразметкой</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/open-props/open-props.min.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="header-logo"><span class="accent">{</span>&nbsp;schema<span class="accent">}</span></a>
+  <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</header>
+<div class="overlay"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Навигация</div>
+      <nav class="sidebar-nav">
+        <a href="index.html"><span class="sidebar-icon">🏠</span> Главная</a>
+        <a href="what-is.html"><span class="sidebar-icon">📖</span> Что такое микроразметка</a>
+        <a href="schema.html"><span class="sidebar-icon">🗂</span> Schema.org</a>
+        <a href="json-ld.html"><span class="sidebar-icon">⚡</span> JSON-LD</a>
+        <a href="microdata.html"><span class="sidebar-icon">🏷</span> Microdata и RDFa</a>
+        <a href="types.html"><span class="sidebar-icon">🔢</span> Основные типы</a>
+        <a href="seo.html"><span class="sidebar-icon">📈</span> Влияние на SEO</a>
+        <a href="tools.html"><span class="sidebar-icon">🛠</span> Инструменты</a>
+        <a href="examples.html"><span class="sidebar-icon">💡</span> Примеры кода</a>
+      </nav>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Подписка</div>
+      <div class="sidebar-subscribe">
+        <p>Получайте обновления о развитии Schema.org</p>
+        <input type="email" placeholder="ваш@email.ru" aria-label="Email">
+        <button type="button">Подписаться</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-hero">
+      <div class="breadcrumb">schema-guide / <span>инструменты</span></div>
+      <h1 class="page-title"><span class="hl">Инструменты</span> для работы<br>с микроразметкой</h1>
+      <p class="page-desc">Валидаторы, генераторы, плагины и расширения браузера для удобной работы со структурированными данными.</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Валидаторы от Google</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🔍</div>
+          <div class="card-title">Rich Results Test</div>
+          <div class="card-desc">Официальный инструмент Google для проверки поддержки rich results. Показывает предпросмотр сниппета. <strong>search.google.com/test/rich-results</strong></div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <div class="card-title">Search Console</div>
+          <div class="card-desc">Отчёт «Расширенные результаты» показывает ошибки и предупреждения разметки для проиндексированных страниц.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🗺</div>
+          <div class="card-title">Schema Markup Validator</div>
+          <div class="card-desc">Инструмент от schema.org для проверки любой разметки (включая типы вне Rich Results). <strong>validator.schema.org</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Сторонние инструменты</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Инструмент</th><th>Тип</th><th>Назначение</th><th>Цена</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Merkle Schema Generator</strong></td><td>Генератор</td><td>Визуальное создание JSON-LD без кода</td><td>Бесплатно</td></tr>
+          <tr><td><strong>JSON-LD Playground</strong></td><td>Отладчик</td><td>Тестирование и визуализация JSON-LD</td><td>Бесплатно</td></tr>
+          <tr><td><strong>Screaming Frog SEO Spider</strong></td><td>Краулер</td><td>Аудит разметки всего сайта</td><td>Freemium</td></tr>
+          <tr><td><strong>Structured Data Linter</strong></td><td>Валидатор</td><td>Валидация Microdata, RDFa, JSON-LD</td><td>Бесплатно</td></tr>
+          <tr><td><strong>Yoast SEO (WordPress)</strong></td><td>Плагин CMS</td><td>Автогенерация разметки для WordPress</td><td>Freemium</td></tr>
+          <tr><td><strong>Rank Math (WordPress)</strong></td><td>Плагин CMS</td><td>Расширенная разметка с визуальным редактором</td><td>Freemium</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Расширения для Chrome</h2>
+      <ul class="styled-list">
+        <li><strong>Structured Data Testing Tool</strong> — видит всю разметку на текущей вкладке в один клик</li>
+        <li><strong>SEO Meta in 1 CLICK</strong> — показывает мета-теги и разметку страницы</li>
+        <li><strong>JSON-LD Viewer</strong> — подсвечивает и форматирует JSON-LD на странице</li>
+        <li><strong>Schema Builder</strong> — генерирует код разметки прямо в браузере</li>
+        <li><strong>OpenLink Structured Data Sniffer</strong> — определяет все форматы разметки на странице</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Пошаговый процесс внедрения</h2>
+      <ol class="styled-ol">
+        <li>Определите типы страниц вашего сайта (статьи, товары, рецепты и т.д.)</li>
+        <li>Выберите подходящие типы Schema.org для каждого шаблона страницы</li>
+        <li>Составьте JSON-LD разметку вручную или с помощью генератора</li>
+        <li>Проверьте разметку в Rich Results Test до публикации</li>
+        <li>Внедрите разметку на сайт (вручную, через плагин CMS или GTM)</li>
+        <li>Запросите переобход страниц в Google Search Console</li>
+        <li>Мониторьте отчёт «Расширенные результаты» в Search Console</li>
+        <li>Исправьте ошибки и предупреждения по мере их появления</li>
+      </ol>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Добавление через Google Tag Manager</h2>
+      <p>GTM позволяет внедрить JSON-LD без изменения кода сайта — удобно для маркетологов и SEO-специалистов без доступа к исходникам:</p>
+      <div class="code-block"><pre><span class="c-com">/* Тег GTM: Custom HTML */</span>
+<span class="c-tag">&lt;script</span> <span class="c-attr">type</span><span class="c-val">="application/ld+json"</span><span class="c-tag">&gt;</span>
+<span class="c-key">{</span>
+  <span class="c-str">"@context"</span>: <span class="c-val">"https://schema.org"</span>,
+  <span class="c-str">"@type"</span>: <span class="c-val">"WebSite"</span>,
+  <span class="c-str">"name"</span>: <span class="c-val">"{{Site Name}}"</span>,  <span class="c-com">/* переменная GTM */</span>
+  <span class="c-str">"url"</span>: <span class="c-val">"{{Page URL}}"</span>
+<span class="c-key">}</span>
+<span class="c-tag">&lt;/script&gt;</span>
+
+<span class="c-com">/* Триггер: All Pages (или конкретные шаблоны) */</span></pre></div>
+      <div class="info-box"><strong>Совет:</strong> При использовании GTM убедитесь, что скрипты рендерятся до индексации. Google умеет исполнять JavaScript, но задержка рендеринга может влиять на своевременную индексацию разметки.</div>
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-col-title">О проекте</div>
+      <p style="font-size:0.85rem;color:var(--text-muted);">Учебный сайт по теме «Использование микроразметки (Schema.org, JSON-LD)». CSS-фреймворк: Open Props.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Разделы</div>
+      <ul class="footer-links">
+        <li><a href="what-is.html">Что такое микроразметка</a></li>
+        <li><a href="schema.html">Schema.org</a></li>
+        <li><a href="json-ld.html">JSON-LD</a></li>
+        <li><a href="types.html">Основные типы</a></li>
+        <li><a href="tools.html">Инструменты</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Контакты</div>
+      <ul class="footer-links">
+        <li>Студент: Жуковский Даниил Константинович</li>
+        <li><a href="mailto:student@example.ru">student@example.ru</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Жуковский Даниил Константинович. Все права защищены.</span>
+    <span>Open Props · HTML5 · CSS3</span>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

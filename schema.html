@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Schema.org — словарь типов данных</title>
+  <meta name="description" content="Всё о словаре Schema.org: структура, иерархия типов, как применять на практике">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/open-props/open-props.min.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="header-logo"><span class="accent">{</span>&nbsp;schema<span class="accent">}</span></a>
+  <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</header>
+<div class="overlay"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Навигация</div>
+      <nav class="sidebar-nav">
+        <a href="index.html"><span class="sidebar-icon">🏠</span> Главная</a>
+        <a href="what-is.html"><span class="sidebar-icon">📖</span> Что такое микроразметка</a>
+        <a href="schema.html"><span class="sidebar-icon">🗂</span> Schema.org</a>
+        <a href="json-ld.html"><span class="sidebar-icon">⚡</span> JSON-LD</a>
+        <a href="microdata.html"><span class="sidebar-icon">🏷</span> Microdata и RDFa</a>
+        <a href="types.html"><span class="sidebar-icon">🔢</span> Основные типы</a>
+        <a href="seo.html"><span class="sidebar-icon">📈</span> Влияние на SEO</a>
+        <a href="tools.html"><span class="sidebar-icon">🛠</span> Инструменты</a>
+        <a href="examples.html"><span class="sidebar-icon">💡</span> Примеры кода</a>
+      </nav>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Подписка</div>
+      <div class="sidebar-subscribe">
+        <p>Получайте обновления о развитии Schema.org</p>
+        <input type="email" placeholder="ваш@email.ru" aria-label="Email">
+        <button type="button">Подписаться</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-hero">
+      <div class="breadcrumb">schema-guide / <span>schema.org</span></div>
+      <h1 class="page-title"><span class="hl">Schema.org</span> — словарь типов</h1>
+      <p class="page-desc">Совместный проект Google, Microsoft, Yahoo и Yandex — единый словарь семантических типов и свойств.</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Что такое Schema.org</h2>
+      <p>Schema.org — это открытый словарь (онтология) понятий и их свойств, запущенный 2 июня 2011 года. Он определяет несколько сотен «типов» (Thing, Person, Product, Event…) и тысячи «свойств» для описания реального мира в машиночитаемом виде.</p>
+      <p>Проект управляется сообществом через GitHub-репозиторий и регулярно обновляется. Актуальная версия словаря доступна на <strong>schema.org</strong>.</p>
+      <div class="info-box"><strong>Версия на 2026 год:</strong> Schema.org содержит более 800 типов и свыше 1400 свойств, охватывающих медицину, финансы, спорт, науку, образование и другие области.</div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Иерархия типов</h2>
+      <p>Все типы Schema.org наследуются от базового класса <code>Thing</code>. Иерархия похожа на ООП: дочерние типы наследуют все свойства родительских и добавляют собственные.</p>
+      <div class="code-block"><pre>Thing
+├── Action
+├── CreativeWork
+│   ├── Article
+│   │   ├── NewsArticle
+│   │   └── BlogPosting
+│   ├── Book
+│   ├── Movie
+│   └── Recipe
+├── Event
+├── Intangible
+│   ├── JobPosting
+│   └── Rating
+├── Organization
+│   └── LocalBusiness
+│       └── Restaurant
+└── Person</pre></div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Популярные типы и применение</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Тип</th><th>Применение</th><th>Ключевые свойства</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>Article</code></td><td>Статьи, блог-посты, новости</td><td>headline, author, datePublished, image</td></tr>
+          <tr><td><code>Product</code></td><td>Товары интернет-магазинов</td><td>name, offers, aggregateRating, brand</td></tr>
+          <tr><td><code>Recipe</code></td><td>Кулинарные рецепты</td><td>cookTime, nutrition, recipeIngredient</td></tr>
+          <tr><td><code>Event</code></td><td>Мероприятия, концерты</td><td>startDate, location, organizer, offers</td></tr>
+          <tr><td><code>LocalBusiness</code></td><td>Компании, организации</td><td>address, telephone, openingHours, geo</td></tr>
+          <tr><td><code>Person</code></td><td>Авторы, персоны</td><td>name, jobTitle, email, sameAs</td></tr>
+          <tr><td><code>FAQPage</code></td><td>Страницы с вопросами и ответами</td><td>mainEntity (Question + Answer)</td></tr>
+          <tr><td><code>JobPosting</code></td><td>Вакансии на работу</td><td>title, hiringOrganization, baseSalary</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Свойства и значения</h2>
+      <p>Каждый тип имеет набор допустимых свойств. Свойства могут принимать значения примитивных типов (Text, Number, Date, URL, Boolean) или ссылаться на другие типы Schema.org.</p>
+      <div class="code-block"><pre><span class="c-key">{</span>
+  <span class="c-str">"@context"</span>: <span class="c-val">"https://schema.org"</span>,
+  <span class="c-str">"@type"</span>: <span class="c-val">"LocalBusiness"</span>,
+  <span class="c-str">"name"</span>: <span class="c-val">"Кофейня «Код»"</span>,            <span class="c-com">// Text</span>
+  <span class="c-str">"telephone"</span>: <span class="c-val">"+7-495-000-00-00"</span>,   <span class="c-com">// Text</span>
+  <span class="c-str">"url"</span>: <span class="c-val">"https://example.ru"</span>,          <span class="c-com">// URL</span>
+  <span class="c-str">"priceRange"</span>: <span class="c-val">"₽₽"</span>,                 <span class="c-com">// Text</span>
+  <span class="c-str">"address"</span>: <span class="c-key">{</span>                       <span class="c-com">// PostalAddress</span>
+    <span class="c-str">"@type"</span>: <span class="c-val">"PostalAddress"</span>,
+    <span class="c-str">"streetAddress"</span>: <span class="c-val">"ул. Тверская, 1"</span>,
+    <span class="c-str">"addressLocality"</span>: <span class="c-val">"Москва"</span>,
+    <span class="c-str">"addressCountry"</span>: <span class="c-val">"RU"</span>
+  <span class="c-key">}</span>
+<span class="c-key">}</span></pre></div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Расширения Schema.org</h2>
+      <ul class="styled-list">
+        <li><strong>schema:auto</strong> — расширение для автомобильной отрасли</li>
+        <li><strong>schema:bib</strong> — библиографические данные, книги, статьи</li>
+        <li><strong>schema:health-lifesci</strong> — медицина и науки о жизни</li>
+        <li><strong>schema:meta</strong> — метаданные для самого словаря</li>
+        <li><strong>schema:pending</strong> — типы, ожидающие официального утверждения</li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-col-title">О проекте</div>
+      <p style="font-size:0.85rem;color:var(--text-muted);">Учебный сайт по теме «Использование микроразметки (Schema.org, JSON-LD)». CSS-фреймворк: Open Props.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Разделы</div>
+      <ul class="footer-links">
+        <li><a href="what-is.html">Что такое микроразметка</a></li>
+        <li><a href="schema.html">Schema.org</a></li>
+        <li><a href="json-ld.html">JSON-LD</a></li>
+        <li><a href="types.html">Основные типы</a></li>
+        <li><a href="tools.html">Инструменты</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Контакты</div>
+      <ul class="footer-links">
+        <li>Студент: Жуковский Даниил Константинович</li>
+        <li><a href="mailto:student@example.ru">student@example.ru</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Жуковский Даниил Константинович. Все права защищены.</span>
+    <span>Open Props · HTML5 · CSS3</span>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
